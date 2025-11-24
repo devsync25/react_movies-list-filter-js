@@ -4,7 +4,7 @@ import { MoviesList } from './components/MoviesList';
 import moviesFromServer from './api/movies.json';
 
 export const App = () => {
-  const [query, setQuerry] = useState('');
+  const [query, setQuery] = useState('');
 
   return (
     <div className="page">
@@ -23,13 +23,13 @@ export const App = () => {
                 className="input"
                 placeholder="Type search word"
                 value={query}
-                onChange={e => setQuerry(e.target.value)}
+                onChange={changeEvent => setQuery(changeEvent.target.value)}
               />
             </div>
           </div>
         </div>
 
-        <MoviesList movies={moviesFromServer} />
+        <MoviesList movies={moviesFromServer} query={query} />
       </div>
 
       <div className="sidebar">Sidebar goes here</div>

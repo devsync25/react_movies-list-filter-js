@@ -5,15 +5,15 @@ export const MoviesList = ({ movies, query = '' }) => {
   const normalizedQuery = query.trim().toLowerCase();
 
   const visibleMovies = movies.filter(movie => {
-    const title = movie.title.toLowerCase().trim();
-    const description = movie.description.toLowerCase().trim();
-
     if (!normalizedQuery) return true;
 
-    const exactMatchTitle = title === normalizedQuery;
-    const partiaMatchDescription = description.includes(normalizedQuery);
+    const title = movie.title.toLowerCase();
+    const description = movie.description.toLowerCase().trim();
 
-    return exactMatchTitle || partiaMatchDescription;
+    const isTitleMatchQuery = title.includes(normalizedQuery);
+    const isDescriptionMatchQuery = description.includes(normalizedQuery);
+
+    return isTitleMatchQuery || isDescriptionMatchQuery;
   });
 
   return (
